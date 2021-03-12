@@ -1,3 +1,4 @@
+
 class Person
   attr_accessor :partner, :name
 
@@ -7,7 +8,13 @@ class Person
 
   def get_married(person)
     self.partner = person
-    person.partner = self
+    if person.class != Person
+      raise PartnerError
+    else
+      person.partner = self
+    end
+  end
+  class PartnerError < StandardError
   end
 
 end
